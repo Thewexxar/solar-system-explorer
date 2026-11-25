@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar System Explorer</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"
+        }
+    }
+    </script>
+</head>
+
+<body>
+
+    <header>
+        <h1>Solar System Explorer</h1>
+        <p>Explore our solar system in 3D</p>
+    </header>
+
+    <main>
+
+<!-- Galaxy introduction screen -->
+<div id="galaxy-view">
+   
+<!-- Galaxy image and Sun marker -->
+<div id="galaxy-zoom-layer">
+
+    <img
+        src="textures/milkyway_galaxy.jpg"
+        alt="Illustration of the Milky Way galaxy"
+        id="galaxy-image"
+    >
+
+    <!-- Approximate location of the Sun -->
+    
+<div id="galaxy-sun-marker">
+    <span id="galaxy-sun-dot"></span>
+    <span id="galaxy-sun-label">SUN</span>
+</div>
+
+
+</div>
+
+
+    <div id="galaxy-content">
+        <p id="galaxy-label">THE MILKY WAY</p>
+        <h2>Explore Our Solar System</h2>
+        <p>Discover the planets, moons and spacecraft in our cosmic neighbourhood.</p>
+
+        <button id="explore-button">
+            Explore Solar System
+        </button>
+    </div>
+</div>
+
+        <div id="solar-system"></div>
+        <button id="back-to-galaxy">🌌 Back to Galaxy</button>
+         <button id="pause-button">Pause ⏸</button>
+
+<div id="speed-control">
+    <label for="speed-slider">Orbital Speed</label>
+
+    <input
+        type="range"
+        id="speed-slider"
+        min="-5"
+        max="5"
+        step="0.5"
+        value="0.5"
+    >
+
+    <span id="speed-value">0.5x</span>
+</div>
+
+
+<!-- Simulation time control -->
+<div id="simulation-time">
+    <div class="time-header">
+        <span class="simulation-status">● SIMULATED TIME</span>
+        <span id="simulation-date">NOV 24, 2026</span>
+    </div>
+
+    <div id="simulation-clock">14:30:00</div>
+
+    <button id="reset-time-button">
+        ↺ Reset Time
+    </button>
+
+    <p class="simulation-note">
+        Simulated time · Planet positions are illustrative
+    </p>
+</div>
+
+
+<!-- ===== SPACE RADIO ===== -->
+<div id="space-radio">
+
+    <div class="radio-header">
+        <span>🎵 SPACE RADIO</span>
+    </div>
+
+    <div id="radio-track-name">
+        First Light Particles
+    </div>
+
+    <div class="radio-controls">
+        <button id="radio-previous" aria-label="Previous track">⏮</button>
+        <button id="radio-play" aria-label="Play or pause music">▶</button>
+        <button id="radio-next" aria-label="Next track">⏭</button>
+    </div>
+
+    <div class="radio-volume">
+        <label for="radio-volume-slider">🔊 Volume</label>
+        <input
+            type="range"
+            id="radio-volume-slider"
+            min="0"
+            max="100"
+            value="25"
+        >
+    </div>
+
+    <audio id="space-audio" preload="none"></audio>
+
+</div>
+
+
+<!-- ===== SURPRISE MENU ===== -->
+<div id="surprise-panel">
+
+    <button id="surprise-button" type="button">
+        👽 Surprise!
+    </button>
+
+    <div id="surprise-options" hidden>
+
+        <p>Choose your destiny...</p>
+
+        <button id="scenario-alien" type="button">
+            🛸 Alien Invasion
+        </button>
+
+        <button id="scenario-sun" type="button">
+            ☀️ Solar Apocalypse
+        </button>
+
+    </div>
+
+</div>
+
+
+
+        
+<div id="planet-info">
+    <p class="info-label" id="info-category">PLANET INFORMATION</p>
+
+    <h2 id="planet-name">Welcome!</h2>
+    <p id="object-type"></p>
+
+    <div id="planet-stats"></div>
+
+    
+<p id="planet-description">
+    Click on an object to learn more about it.
+</p>
+
+<div id="extended-description" hidden></div>
+
+<button id="read-more-button" hidden>
+    Read More
+</button>
+
+</div>
+
+    </main>
+
+    <script type="module" src="script.js"></script>
+
+</body>
+</html>

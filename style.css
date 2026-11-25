@@ -1,0 +1,674 @@
+
+/* Basic page settings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #050816;
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+/* Header */
+header {
+    position: absolute;
+    top: 25px;
+    left: 40px;
+    z-index: 10;
+}
+
+header h1 {
+    font-size: 32px;
+    color: #ffffff;
+}
+
+header p {
+    margin-top: 8px;
+    color: #9ca3af;
+    font-size: 15px;
+}
+
+/* Main area */
+main {
+    width: 100vw;
+    height: 100vh;
+}
+
+/* 3D solar system */
+#solar-system {
+    width: 100%;
+    height: 100%;
+}
+
+/* Planet information panel */
+#planet-info {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    width: 340px;
+    padding: 25px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid #2563eb;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(37, 99, 235, 0.2);
+    z-index: 10;
+}
+
+#planet-info h2 {
+    margin-bottom: 12px;
+    color: #60a5fa;
+    font-size: 24px;
+}
+
+#planet-info p {
+    color: #d1d5db;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Smaller screens */
+@media (max-width: 600px) {
+    header {
+        top: 15px;
+        left: 20px;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+
+    #planet-info {
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        width: auto;
+        padding: 18px;
+    }
+}
+
+/* Pause and resume button */
+#pause-button {
+    position: absolute;
+   top: 165px;
+left: 20px;
+    z-index: 20;
+
+    padding: 12px 24px;
+    background: #2563eb;
+    color: white;
+
+    border: 1px solid #60a5fa;
+    border-radius: 10px;
+
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: background 0.2s;
+}
+
+#pause-button:hover {
+    background: #1d4ed8;
+}
+
+@media (max-width: 600px) {
+    #pause-button {
+        top: 95px;
+        left: 20px;
+    }
+}
+
+/* Orbital speed control */
+#speed-control {
+    position: absolute;
+    top: 225px;
+left: 20px;
+    z-index: 20;
+
+    width: 220px;
+    padding: 15px;
+
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid #2563eb;
+    border-radius: 12px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#speed-control label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+#speed-slider {
+    width: 100%;
+    cursor: pointer;
+    accent-color: #3b82f6;
+}
+
+#speed-value {
+    color: #60a5fa;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    #speed-control {
+        top: 155px;
+        left: 20px;
+        width: 180px;
+    }
+}
+
+/* Extended planet information */
+.info-label {
+    color: #94a3b8;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+#planet-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.stat-label {
+    font-size: 11px;
+    color: #94a3b8;
+}
+
+.stat-value {
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+#planet-description {
+    border-top: 1px solid #334155;
+    padding-top: 15px;
+}
+
+/* Mobile layout */
+@media (max-width: 600px) {
+    #planet-info {
+        width: auto;
+        max-height: 45vh;
+        overflow-y: auto;
+    }
+}
+
+/* Scrollable information panel */
+#planet-info {
+    max-height: 75vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+/* Extended description */
+#extended-description {
+    margin-top: 15px;
+    color: #d1d5db;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+#extended-description p {
+    margin-bottom: 15px;
+}
+
+/* Read More / Read Less button */
+#read-more-button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+
+    background: #1e293b;
+    color: #ffffff;
+
+    border: 1px solid #334155;
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: background 0.2s;
+}
+
+#read-more-button:hover {
+    background: #334155;
+}
+
+/* Keep hidden elements invisible */
+#extended-description[hidden],
+#read-more-button[hidden] {
+    display: none;
+}
+
+/* Scrollbar design */
+#planet-info::-webkit-scrollbar {
+    width: 6px;
+}
+
+#planet-info::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
+#planet-info::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 10px;
+}
+
+/* ===== GALAXY INTRO SCREEN ===== */
+
+#galaxy-view {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+/* Milky Way image */
+#galaxy-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+   
+}
+
+/* Introduction text */
+#galaxy-content {
+    position: absolute;
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(90%, 520px);
+    padding: 28px;
+    text-align: center;
+    color: white;
+    background: rgba(8, 15, 35, 0.8);
+    border: 1px solid rgba(100, 150, 255, 0.4);
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+}
+
+#galaxy-label {
+    color: #8ab4ff;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+#galaxy-content h2 {
+    margin: 12px 0;
+    font-size: 28px;
+}
+
+#galaxy-content p {
+    line-height: 1.6;
+}
+
+/* Explore button */
+#explore-button {
+    margin-top: 16px;
+    padding: 14px 28px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#explore-button:hover {
+    background: #3b82f6;
+}
+
+/* ===== BACK TO GALAXY BUTTON ===== */
+
+#back-to-galaxy {
+    position: fixed;
+    top: 95px;
+left: 20px;
+    z-index: 100;
+
+    padding: 12px 20px;
+    background: rgba(15, 23, 42, 0.9);
+    color: white;
+
+    border: 1px solid #3b82f6;
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#back-to-galaxy:hover {
+    background: #2563eb;
+}
+/* Galaxy zoom animation */
+
+/* Zoom the galaxy image and Sun marker together */
+#galaxy-view.zooming-in #galaxy-zoom-layer {
+    transform: scale(3.5);
+}
+
+#galaxy-view.zooming-out #galaxy-zoom-layer {
+    transform: scale(1);
+}
+
+
+/* ===== SUN LOCATION IN THE GALAXY ===== */
+
+#galaxy-sun-marker {
+    position: absolute;
+    left: 34%;
+    top: 52%;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 4px;
+
+    pointer-events: none;
+}
+
+/* Glowing Sun marker */
+#galaxy-sun-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+
+    background: #fff6c2;
+
+    box-shadow:
+        0 0 8px #ffffff,
+        0 0 18px #ffdd66,
+        0 0 35px #ffaa00;
+
+    animation: sunPulse 2s ease-in-out infinite;
+}
+
+/* Subtle glowing animation */
+@keyframes sunPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.9;
+    }
+
+    50% {
+        transform: scale(1.25);
+        opacity: 1;
+    }
+}
+
+/* ===== GALAXY ZOOM LAYER ===== */
+
+#galaxy-zoom-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+
+    transform: scale(1);
+
+    /* Zoom towards the approximate Sun location */
+    transform-origin: 34% 52%;
+
+    transition: transform 2.5s ease-in-out;
+
+    pointer-events: none;
+}
+
+/* ===== SIMULATION TIME PANEL ===== */
+
+#simulation-time {
+    position: fixed;
+    top: 330px;
+    left: 20px;
+    z-index: 100;
+
+    width: 220px;
+    box-sizing: border-box;
+    padding: 16px;
+
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid #2563eb;
+    border-radius: 12px;
+
+    color: white;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.time-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.simulation-status {
+    color: #4ade80;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+#simulation-date {
+    font-size: 12px;
+    color: #cbd5e1;
+    letter-spacing: 1px;
+}
+
+#simulation-clock {
+    margin: 14px 0;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-variant-numeric: tabular-nums;
+}
+
+#reset-time-button {
+    width: 100%;
+    padding: 10px 12px;
+
+    background: #2563eb;
+    color: white;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#reset-time-button:hover {
+    background: #3b82f6;
+}
+
+.simulation-note {
+    margin: 12px 0 0;
+    color: #94a3b8;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* Allow scrolling on smaller screens */
+@media (max-height: 650px) {
+    #simulation-time {
+        top: auto;
+        bottom: 15px;
+        max-height: 35vh;
+        overflow-y: auto;
+    }
+}
+
+/* ===== SPACE RADIO ===== */
+
+#space-radio {
+    position: fixed;
+    top: 540px;
+    left: 20px;
+    z-index: 100;
+
+    width: 220px;
+    padding: 16px;
+    box-sizing: border-box;
+
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid #2563eb;
+    border-radius: 12px;
+
+    color: white;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.radio-header {
+    color: #93c5fd;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+#radio-track-name {
+    font-size: 13px;
+    color: #cbd5e1;
+    margin-bottom: 14px;
+}
+
+.radio-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.radio-controls button {
+    padding: 9px 12px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.radio-controls button:hover {
+    background: #3b82f6;
+}
+
+.radio-volume label {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 8px;
+    color: #94a3b8;
+}
+
+#radio-volume-slider {
+    width: 100%;
+}
+
+
+/* ===== SURPRISE MENU ===== */
+
+
+#surprise-panel {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    z-index: 110;
+    box-sizing: border-box;
+}
+
+
+#surprise-button {
+    width: 100%;
+    padding: 13px;
+    background: linear-gradient(135deg, #7c3aed, #4f46e5);
+    color: white;
+    border: 1px solid #a78bfa;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(124, 58, 237, 0.25);
+}
+
+#surprise-button:hover {
+    background: linear-gradient(135deg, #9333ea, #6366f1);
+    box-shadow: 0 0 22px rgba(167, 139, 250, 0.5);
+}
+
+#surprise-options {
+    margin-top: 10px;
+    padding: 14px;
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid #8b5cf6;
+    border-radius: 12px;
+    text-align: center;
+}
+
+#surprise-options[hidden] {
+    display: none;
+}
+
+#surprise-options p {
+    color: #c4b5fd;
+    font-size: 13px;
+    margin: 0 0 12px;
+}
+
+#scenario-alien,
+#scenario-sun {
+    display: block;
+    width: 100%;
+    padding: 11px 8px;
+    margin-top: 8px;
+    background: #312e81;
+    color: white;
+    border: 1px solid #6366f1;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+#scenario-alien:hover,
+#scenario-sun:hover {
+    background: #4338ca;
+}
