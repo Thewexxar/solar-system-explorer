@@ -1877,10 +1877,14 @@ function returnToGalaxy() {
 
     }, 2500);
 
-    // Finish the transition
-    setTimeout(() => {
-        galaxyTransitioning = false;
-    }, 5000);
+   // Finish the transition
+setTimeout(() => {
+    galaxyView.style.display = 'block';
+    galaxyView.style.opacity = '1';
+    galaxyView.style.transition = 'none';
+
+    galaxyTransitioning = false;
+}, 5000);
 
 }
 
