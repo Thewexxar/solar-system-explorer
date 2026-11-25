@@ -1792,6 +1792,17 @@ exploreButton.addEventListener('click', () => {
     console.log("Explore button clicked!");
     if (galaxyTransitioning) return;
 
+    // Restore the 3D scene behind the galaxy overlay
+    if (scenarioActive) {
+        if (solarCameraActive) {
+            // Keep the ? marker visible during zoom
+            resetSolarApocalypse(false);
+        } else {
+            resetAlienInvasion();
+        }
+    }
+
+
     
     
 
@@ -1810,21 +1821,22 @@ startCameraFlight(solarSystemCameraPosition);
         galaxyView.style.opacity = '0';
     }, 900);
 
-    // Reveal the solar system
+    
+    
+    
+    // Reveal the already restored Solar System
     setTimeout(() => {
-
-// Restore the Solar System after a Surprise scenario
-    if (scenarioActive) {
-        if (solarCameraActive) {
-            resetSolarApocalypse();
-        } else {
-            resetAlienInvasion();
-        }
-    }
-
         galaxyView.style.display = 'none';
+
+        // Restore the marker after the galaxy is hidden
+        document.getElementById('galaxy-sun-label').textContent = 'SUN';
+        document.getElementById('galaxy-sun-dot').style.display = '';
+
         galaxyTransitioning = false;
     }, 2500);
+
+
+
 
 });
 
@@ -2959,7 +2971,7 @@ function getSolarDestructionTargets() {
 
  // ===== RESET SOLAR APOCALYPSE =====
 
-function resetSolarApocalypse() {
+function resetSolarApocalypse(restoreMarker = true) {
 
     // Restore the Sun
     sun.visible = true;
@@ -2988,9 +3000,13 @@ function resetSolarApocalypse() {
         line.visible = true;
     });
 
-    // Restore SUN marker in the galaxy
-    document.getElementById('galaxy-sun-label').textContent = 'SUN';
-    document.getElementById('galaxy-sun-dot').style.display = '';
+    
+    // Restore the SUN marker only when requested
+    if (restoreMarker) {
+        document.getElementById('galaxy-sun-label').textContent = 'SUN';
+        document.getElementById('galaxy-sun-dot').style.display = '';
+    }
+
 
     // Reset the cinematic camera state
     solarCameraActive = false;
